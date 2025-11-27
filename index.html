@@ -742,13 +742,12 @@
 ,,96063930,'030852','Полоса каучук V-обр балка 1000мм Karcher','4.2.3.'
 ];
         let button = document.querySelector("#button");
-        let interactive = document.querySelector('#interactive');
         let code;
         const startButton = document.getElementById('startButton');
         const stopButton = document.getElementById('stopButton');
         const resultDiv = document.getElementById('result');
         let isScanning = false;
-
+        let interactive = document.querySelector('#interactive');
     startButton.addEventListener('click', function() {
         if (!isScanning) {
             startScanner();
@@ -777,13 +776,12 @@
             },
             decoder: {
                 readers: [
-                    "ean_reader"/*,
                     "code_128_reader",
                     "ean_reader",
                     "ean_8_reader",
                     "code_39_reader",
                     "upc_reader",
-                    "upc_e_reader"*/
+                    "upc_e_reader"
                 ]
             }
         }, function(err) {
