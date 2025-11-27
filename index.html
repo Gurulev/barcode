@@ -763,8 +763,8 @@
 
     function startScanner() {
         interactive.style.display = "block";
-        let interWidth = interactive.clientWidth;
-        let interHeight = interactive.clientHeight;
+        let interHeight = interactive.clientWidth;
+        let interWidth = interactive.clientHeight;
         Quagga.init({
             inputStream: {
                 name: "Live",
@@ -834,7 +834,7 @@
             case 6 :
                 itemArray = list.indexOf(code.value);
                 if (itemArray == -1) {
-                    result.innerHTML= "Ничего не нашлось или номер указан неверно!";
+                    result.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
                 } else {
                 let article = `${String(list[itemArray-1])[0]}.${String(list[itemArray-1]).substring(1,4)}-${String(list[itemArray-1]).substring(4,7)}.${String(list[itemArray-1])[7]}`;
                 if (list[itemArray-1] == undefined) {
@@ -851,7 +851,7 @@
                 itemArray = list.indexOf(Number(code.value));
                 console.log(itemArray);
                 if (itemArray == -1) {
-                    result.innerHTML= "Ничего не нашлось или номер указан неверно!";
+                    result.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
                 } else {
                 result.innerHTML=
                 `<b>Место:</b> ${list[itemArray+3]}<br>
@@ -864,7 +864,7 @@
                 itemArray = list.indexOf(Number(code));
                 console.log(itemArray);
                 if (itemArray == -1) {
-                    result.innerHTML= "Ничего не нашлось или номер указан неверно!";
+                    result.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
                 } else {
                 result.innerHTML=
                 `<b>EAN:</b> ${code}<br>
@@ -876,7 +876,7 @@
             break;
             
             default:
-            result.innerHTML= "Ничего не нашлось или номер указан неверно!"+"<br>EAN: "+code;
+            result.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
                 break;
         }
                 
