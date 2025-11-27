@@ -867,7 +867,8 @@
                     result.innerHTML= "Ничего не нашлось или номер указан неверно!";
                 } else {
                 result.innerHTML=
-                `<b>Место:</b> ${list[itemArray+4]}<br>
+                `EAN: <b>${code};
+                <b>Место:</b> ${list[itemArray+4]}<br>
                 <b>Артикул:</b> ${String(list[itemArray+1])[0]}.${String(list[itemArray+1]).substring(1,4)}-${String(list[itemArray+1]).substring(4,7)}.${String(list[itemArray+1])[7]}<br>
                 <b>Код:</b> ${list[itemArray+2]}<br>
                 <b>Наименование:</b> ${list[itemArray+3]}
