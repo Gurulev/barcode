@@ -31,11 +31,12 @@
         }
         #interactive {
             margin: 2em auto;
-            width: 80%;
-            height: 30vh;
-            background-color: #300cfc;
+            width: 100%;
+            height: 90vh;
+            background-color: #fc0c20;
             border: 0.2em solid #cccccc85;
             border-radius: 0.3em;
+            display: none;
         }
         #result {
             margin-top: 1em;
@@ -761,6 +762,7 @@
     });
 
     function startScanner() {
+        interactive.style.display = "block";
         let interWidth = interactive.clientWidth;
         let interHeight = interactive.clientHeight;
         Quagga.init({
@@ -769,8 +771,8 @@
                 type: "LiveStream",
                 target: interactive,//Раньше было так: document.querySelector('#interactive'),
                 constraints: {
-                    width: 640,//interWidth,
-                    height: 480,//interHeight,
+                    width: interWidth,
+                    height: interHeight,
                     facingMode: "environment" // Используем заднюю камеру
                 }
             },
@@ -802,6 +804,7 @@
             
             // Останавливаем сканирование после успешного распознавания
             stopScanner();
+            interactive.style.display = "none";
             search(code);
         });
     }
@@ -809,6 +812,7 @@
     function stopScanner() {
         Quagga.stop();
         isScanning = false;
+        interactive.style.display = "none";
         resultDiv.innerHTML += "<br>Сканирование остановлено";
     }
 
