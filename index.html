@@ -33,7 +33,7 @@
             margin: 2em auto;
             width: 80%;
             height: 30vh;
-            background-color: #fc0c0c;
+            background-color: #300cfc;
             border: 0.2em solid #cccccc85;
             border-radius: 0.3em;
         }
@@ -769,8 +769,8 @@
                 type: "LiveStream",
                 target: interactive,//Раньше было так: document.querySelector('#interactive'),
                 constraints: {
-                    width: interWidth,
-                    height: interHeight,
+                    width: 640,//interWidth,
+                    height: 480,//interHeight,
                     facingMode: "environment" // Используем заднюю камеру
                 }
             },
