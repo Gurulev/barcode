@@ -817,34 +817,37 @@
         Quagga.stop();
         isScanning = false;
         interactive.style.display = "none";
-        resultDiv.innerHTML += "<br>Сканирование остановлено";
+        resultDiv.innerHTML = "Сканирование остановлено";
     }
 
 
     
     
     function search(code){
-        console.log(typeof code);
-        let result = document.querySelector("#result");
+        //console.log(typeof code);
+        //let result = document.querySelector("#result");
         let lengthValue;
         let itemArray;
+        let elementForSearch;
         if (typeof code =="object") {
             lengthValue = code.value.length;
+            elementForSearch = code.value;
         } else {
             lengthValue = String(code).length;
+            elementForSearch = code;
         }
                 
         switch (lengthValue) {
             case 6 :
-                itemArray = list.indexOf(code.value);
+                itemArray = list.indexOf(String(elementForSearch));
                 if (itemArray == -1) {
-                    result.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
+                    resultDiv.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
                 } else {
                 let article = `${String(list[itemArray-1])[0]}.${String(list[itemArray-1]).substring(1,4)}-${String(list[itemArray-1]).substring(4,7)}.${String(list[itemArray-1])[7]}`;
                 if (list[itemArray-1] == undefined) {
                 article = "Отсутствует";    
                 }    
-                result.innerHTML=
+                resultDiv.innerHTML=
                 `<b>Место:</b> ${list[itemArray+2]}<br>
                 <b>Артикул:</b> ${article}<br>
                 <b>Код:</b> ${list[itemArray]}<br>
@@ -852,12 +855,12 @@
                 `;}
             break;
             case 8 :
-                itemArray = list.indexOf(Number(code.value));
+                itemArray = list.indexOf(Number(elementForSearch));
                 console.log(itemArray);
                 if (itemArray == -1) {
-                    result.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
+                    resultDiv.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
                 } else {
-                result.innerHTML=
+                resultDiv.innerHTML=
                 `<b>Место:</b> ${list[itemArray+3]}<br>
                 <b>Артикул:</b> ${String(list[itemArray])[0]}.${String(list[itemArray]).substring(1,4)}-${String(list[itemArray]).substring(4,7)}.${String(list[itemArray])[7]}<br>
                 <b>Код:</b> ${list[itemArray+1]}<br>
@@ -865,12 +868,12 @@
                 `;}
             break;
             case 13 :
-                itemArray = list.indexOf(Number(code));
+                itemArray = list.indexOf(Number(elementForSearch));
                 console.log(itemArray);
                 if (itemArray == -1) {
-                    result.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
+                    resultDiv.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
                 } else {
-                result.innerHTML=
+                resultDiv.innerHTML=
                 `<b>EAN:</b> ${code}<br>
                 <b>Место:</b> ${list[itemArray+4]}<br>
                 <b>Артикул:</b> ${String(list[itemArray+1])[0]}.${String(list[itemArray+1]).substring(1,4)}-${String(list[itemArray+1]).substring(4,7)}.${String(list[itemArray+1])[7]}<br>
@@ -880,7 +883,7 @@
             break;
             
             default:
-            result.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
+            resultDiv.innerHTML= code+"<br>Ничего не нашлось или номер указан неверно!";
                 break;
         }
                 
@@ -893,7 +896,7 @@
             search(document.querySelector("#codeIn"));
         }
     })
-
+    interactive.addEventListener("dblclick", stopScanner,false);
 
 
 
